@@ -1,3 +1,10 @@
+@use "sass:math";
+@use "sass:color";
+@debug someVariable; // This will print the value of someVariable to the console.
+
+
+
+
 $planetCount: 9;
 $planetSize: 1200px; // Size of each planet
 $planetSpacing: 2300px; // Space between each planet
@@ -10,7 +17,7 @@ $traverse: "";
 $traverseTriggers: "";
 
 // Colors
-$mercury:#E8927C;
+$mercury: #E8927C; // Example color variable
 $venus: #b45d15;
 $earth: #26daaa;
 $mars: #e55f45;
@@ -81,7 +88,7 @@ $pluto: #FF8732;
 %planet {
     height: $planetSize;
     width: $planetSize;
-    border-radius: $planetSize / 2;
+    border-radius: math.div($planetSize, 2); // Changed from $planetSize / 2
     background: red;
     transition: transform 2.8s .23s cubic-bezier(0.33, 0, 0, 1), opacity 2s .8s, box-shadow 0s 0s; //
     background-size: 1140px 910px !important;
@@ -91,7 +98,7 @@ $pluto: #FF8732;
     & .moon {
         height: 200px;
         width: 200px;
-        border-radius: $planetSize / 2;
+        border-radius: calc($planetSize / 2);
         background: red;  
         position: absolute;
         text-align: center;
@@ -393,7 +400,7 @@ body {
                 // Caluclate middle and distribute evenly
                 $labelSize: 34px;
                 $labelSpacing: $menuSpacing;
-                $totalHeight: ($labelSize * $planetCount) + ($labelSpacing * ($planetCount)) / 2;
+                $totalHeight: ($labelSize * $planetCount) + math.div($labelSpacing * $planetCount, 2); // Changed from ($labelSpacing * ($planetCount)) / 2
 
                 top: calc(50vh + 100px + ((#{$labelSpacing} + #{$labelSize}) * #{$l}) + 0px - #{$totalHeight});   
             }
@@ -943,7 +950,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($mercury, 20);  
+                            color: color.adjust($mercury, $lightness: 20%);
                         }
                     }
 
@@ -953,7 +960,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($venus, 20);  
+                            color: color.adjust($venus, $lightness: 20%); 
                         }
                     }
 
@@ -963,7 +970,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($earth, 20);  
+                            color: color.adjust($earth, $lightness: 20%); 
                         }
                     }
 
@@ -973,7 +980,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($mars, 20);  
+                            color: color.adjust($mars, $lightness: 20%);
                         }
                     }
 
@@ -983,7 +990,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($jupiter, 20);  
+                            color: color.adjust($jupiter, $lightness: 20%);
                         }
                     }
 
@@ -993,7 +1000,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($saturn, 20);  
+                            color: color.adjust($saturn, $lightness: 20%);
                         }
                     }
 
@@ -1003,7 +1010,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($uranus, 20);  
+                            color: color.adjust($uranus, $lightness: 20%);
                         }
                     }
 
@@ -1013,7 +1020,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($neptune, 20);
+                            color: color.adjust($neptune, $lightness: 20%);
                         }
                     }
 
@@ -1023,7 +1030,7 @@ body {
                         }
 
                         h2 {
-                            color: lighten($pluto, 20);
+                            color: color.adjust($pluto, $lightness: 20%);
                         }
                     }
 
